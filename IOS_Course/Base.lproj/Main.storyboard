@@ -147,9 +147,11 @@
                     </view>
                     <connections>
                         <outlet property="authorName" destination="MKa-zV-68I" id="UHW-Wc-dll"/>
+                        <outlet property="commentBtn" destination="Won-YB-sYW" id="gZh-vV-agw"/>
                         <outlet property="domain" destination="HZg-FG-FCu" id="STK-Sq-0eX"/>
                         <outlet property="img" destination="lqV-er-jCE" id="Sn0-lg-DPD"/>
                         <outlet property="postTitle" destination="WC3-Xc-qq9" id="xkW-WG-cm2"/>
+                        <outlet property="ratingBtn" destination="Q90-2k-AZc" id="s3d-yU-BlC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet var img: UIImageView?
     
+    @IBOutlet weak var ratingBtn: UIButton!
+    @IBOutlet weak var commentBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -24,6 +27,8 @@ class ViewController: UIViewController {
                     self.authorName.text = res.data.children[0].data.author
                     self.domain.text = res.data.children[0].data.domain
                     self.postTitle.text = res.data.children[0].data.title
+                    self.commentBtn.setTitle(String(res.data.children[0].data.numComments), for: .normal)
+                    self.ratingBtn.setTitle(String(res.data.children[0].data.ups + res.data.children[0].data.downs), for: .normal)
                 }
                 let resImg = res!.data.children[0].data.preview.images[0].source
                 let imgUrl = URL(string: resImg.url.replacingOccurrences(of: "&amp", with: "&"))!
@@ -32,7 +37,6 @@ class ViewController: UIViewController {
                         DispatchQueue.main.async {
                             self?.img?.image = UIImage(data: data)
                         }
-                    
                     }
                 }
             }
