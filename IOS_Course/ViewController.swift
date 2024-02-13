@@ -9,6 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    override func loadView() {
+        //print("Load")
+        //PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 1, after: 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

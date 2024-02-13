@@ -16,6 +16,7 @@
 		DDE4E8172B7B895B00D0C3F4 /* IOS_CourseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE4E8162B7B895B00D0C3F4 /* IOS_CourseTests.swift */; };
 		DDE4E8212B7B895B00D0C3F4 /* IOS_CourseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE4E8202B7B895B00D0C3F4 /* IOS_CourseUITests.swift */; };
 		DDE4E8232B7B895B00D0C3F4 /* IOS_CourseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE4E8222B7B895B00D0C3F4 /* IOS_CourseUITestsLaunchTests.swift */; };
+		DDE4E8302B7B944000D0C3F4 /* PostNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE4E82F2B7B944000D0C3F4 /* PostNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		DDE4E81C2B7B895B00D0C3F4 /* IOS_CourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOS_CourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE4E8202B7B895B00D0C3F4 /* IOS_CourseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_CourseUITests.swift; sourceTree = "<group>"; };
 		DDE4E8222B7B895B00D0C3F4 /* IOS_CourseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_CourseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DDE4E82F2B7B944000D0C3F4 /* PostNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				DDE4E8082B7B895B00D0C3F4 /* Assets.xcassets */,
 				DDE4E80A2B7B895B00D0C3F4 /* LaunchScreen.storyboard */,
 				DDE4E80D2B7B895B00D0C3F4 /* Info.plist */,
+				DDE4E82F2B7B944000D0C3F4 /* PostNetworkService.swift */,
 			);
 			path = IOS_Course;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE4E8302B7B944000D0C3F4 /* PostNetworkService.swift in Sources */,
 				DDE4E8042B7B895800D0C3F4 /* ViewController.swift in Sources */,
 				DDE4E8002B7B895800D0C3F4 /* AppDelegate.swift in Sources */,
 				DDE4E8022B7B895800D0C3F4 /* SceneDelegate.swift in Sources */,
