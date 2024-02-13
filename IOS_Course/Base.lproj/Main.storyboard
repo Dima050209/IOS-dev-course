@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_72" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,37 +13,37 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="IOS_Course" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbP-nI-77S">
-                                <rect key="frame" x="30" y="159" width="370" height="150"/>
+                                <rect key="frame" x="30" y="10" width="508" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKa-zV-68I">
-                                        <rect key="frame" x="0.0" y="0.0" width="84.666666666666671" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="84.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfT-ks-63N">
-                                        <rect key="frame" x="114.66666666666666" y="0.0" width="44" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfT-ks-63N">
+                                        <rect key="frame" x="114.5" y="0.0" width="44" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="domain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZg-FG-FCu">
-                                        <rect key="frame" x="188.66666666666666" y="0.0" width="51" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="domain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZg-FG-FCu">
+                                        <rect key="frame" x="188.5" y="0.0" width="51" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeT-c4-2Zg">
-                                        <rect key="frame" x="323.66666666666669" y="0.0" width="46.333333333333314" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeT-c4-2Zg">
+                                        <rect key="frame" x="461.5" y="0.0" width="46.5" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WC3-Xc-qq9">
-                                        <rect key="frame" x="0.0" y="54" width="370" height="96"/>
+                                        <rect key="frame" x="0.0" y="29" width="508" height="31"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -54,10 +54,13 @@
                                     <constraint firstAttribute="trailing" secondItem="KeT-c4-2Zg" secondAttribute="trailing" id="1di-oV-t5o"/>
                                     <constraint firstAttribute="bottom" secondItem="WC3-Xc-qq9" secondAttribute="bottom" id="2YK-f3-IuH"/>
                                     <constraint firstItem="EfT-ks-63N" firstAttribute="leading" secondItem="MKa-zV-68I" secondAttribute="trailing" constant="30" id="5xD-jm-shN"/>
-                                    <constraint firstItem="KeT-c4-2Zg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HZg-FG-FCu" secondAttribute="trailing" constant="8" symbolic="YES" id="8XB-JL-KOT"/>
+                                    <constraint firstItem="KeT-c4-2Zg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HZg-FG-FCu" secondAttribute="trailing" constant="20" id="8XB-JL-KOT">
+                                        <variation key="heightClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="WC3-Xc-qq9" firstAttribute="leading" secondItem="hbP-nI-77S" secondAttribute="leading" id="ERh-Lt-c4C"/>
                                     <constraint firstItem="KeT-c4-2Zg" firstAttribute="top" secondItem="hbP-nI-77S" secondAttribute="top" id="Odd-QH-ovn"/>
-                                    <constraint firstAttribute="height" constant="150" id="VRC-EK-X8Y">
+                                    <constraint firstAttribute="height" constant="100" id="VRC-EK-X8Y">
+                                        <variation key="widthClass=compact" constant="100"/>
                                         <variation key="heightClass=compact-widthClass=compact" constant="60"/>
                                         <variation key="heightClass=compact-widthClass=regular" constant="60"/>
                                     </constraint>
@@ -70,14 +73,14 @@
                                     <constraint firstItem="HZg-FG-FCu" firstAttribute="leading" secondItem="EfT-ks-63N" secondAttribute="trailing" constant="30" id="trL-Hv-wil"/>
                                     <constraint firstItem="MKa-zV-68I" firstAttribute="leading" secondItem="hbP-nI-77S" secondAttribute="leading" id="vix-Vt-COZ"/>
                                     <constraint firstItem="EfT-ks-63N" firstAttribute="top" secondItem="hbP-nI-77S" secondAttribute="top" id="wuX-oe-sl1"/>
-                                    <constraint firstItem="WC3-Xc-qq9" firstAttribute="top" secondItem="MKa-zV-68I" secondAttribute="bottom" constant="30" id="xkK-ic-WuG">
+                                    <constraint firstItem="WC3-Xc-qq9" firstAttribute="top" secondItem="MKa-zV-68I" secondAttribute="bottom" constant="10" id="xkK-ic-WuG">
                                         <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                                         <variation key="heightClass=compact-widthClass=regular" constant="5"/>
                                     </constraint>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lqV-er-jCE">
-                                <rect key="frame" x="0.0" y="329" width="430" height="300"/>
+                                <rect key="frame" x="0.0" y="75" width="568" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="ZNx-NK-Nzn">
                                         <variation key="heightClass=compact-widthClass=compact" constant="200"/>
@@ -86,7 +89,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHj-G7-bgJ">
-                                <rect key="frame" x="40" y="649" width="350" height="149"/>
+                                <rect key="frame" x="40" y="280" width="488" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q90-2k-AZc">
                                         <rect key="frame" x="0.0" y="0.0" width="49" height="34"/>
@@ -94,12 +97,12 @@
                                         <buttonConfiguration key="configuration" style="plain" image="arrowshape.up" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Won-YB-sYW">
-                                        <rect key="frame" x="150" y="0.0" width="53" height="34"/>
+                                        <rect key="frame" x="297" y="0.0" width="53" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="text.bubble.rtl" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6w-0s-iL3">
-                                        <rect key="frame" x="302" y="0.0" width="48" height="34"/>
+                                        <rect key="frame" x="440" y="0.0" width="48" height="34"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
                                     </button>
@@ -107,7 +110,7 @@
                                 <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="d6w-0s-iL3" secondAttribute="trailing" id="0le-MF-aUl"/>
-                                    <constraint firstItem="d6w-0s-iL3" firstAttribute="leading" secondItem="Won-YB-sYW" secondAttribute="trailing" constant="99" id="GqF-We-S0O"/>
+                                    <constraint firstItem="d6w-0s-iL3" firstAttribute="leading" secondItem="Won-YB-sYW" secondAttribute="trailing" constant="90" id="GqF-We-S0O"/>
                                     <constraint firstItem="d6w-0s-iL3" firstAttribute="top" secondItem="QHj-G7-bgJ" secondAttribute="top" id="KNC-VM-xzQ"/>
                                     <constraint firstItem="Won-YB-sYW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Q90-2k-AZc" secondAttribute="trailing" constant="8" symbolic="YES" id="NKL-13-ga1"/>
                                     <constraint firstItem="Won-YB-sYW" firstAttribute="top" secondItem="QHj-G7-bgJ" secondAttribute="top" id="RTZ-Ca-cIa"/>
@@ -123,12 +126,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QHj-G7-bgJ" secondAttribute="trailing" constant="20" id="2cf-Nn-WdM"/>
                             <constraint firstItem="hbP-nI-77S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="3rm-qc-Rh3"/>
                             <constraint firstItem="lqV-er-jCE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Ih-fD-INd"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="QHj-G7-bgJ" secondAttribute="bottom" constant="100" id="JFN-eo-X5m">
-                                <variation key="heightClass=compact-widthClass=compact" constant="10"/>
-                                <variation key="heightClass=compact-widthClass=regular" constant="10"/>
-                            </constraint>
                             <constraint firstItem="lqV-er-jCE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OmN-LM-Idu"/>
-                            <constraint firstItem="hbP-nI-77S" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Tlo-Lm-XS0">
+                            <constraint firstItem="hbP-nI-77S" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Tlo-Lm-XS0">
                                 <variation key="heightClass=compact-widthClass=compact" constant="10"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="10"/>
                             </constraint>
@@ -143,6 +142,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="10"/>
                             </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QHj-G7-bgJ" secondAttribute="bottom" constant="1" id="ysr-NQ-b6c"/>
                         </constraints>
                     </view>
                     <connections>
