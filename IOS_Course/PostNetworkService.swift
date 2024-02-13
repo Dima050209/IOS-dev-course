@@ -11,14 +11,20 @@ class PostNetworkService {
     static let shared = PostNetworkService()
     private init() {}
     
-    private let url = URL(string: "https://www.reddit.com/r/ios/top.json")!
+    private let urlStart = "https://www.reddit.com/r/"
+    private let urlEnd = "/top.json"
     
-    func fetchRedditAPIWithDataTask(limit:Int = 1, after:String = "", completion: @escaping (Post?) -> Void) {
-        let reqUrl = url
+    private func buildURL(_ subreddit:String = "ios", _ limit:Int = 1, _ after:String = "") -> URL {
+        return URL(string: urlStart + subreddit + urlEnd)!
             .appending(queryItems: [
                 URLQueryItem(name: "limit", value: String(limit)),
                 URLQueryItem(name: "after", value: after)
             ])
+    }
+    func fetchRedditAPIWithDataTask(subreddit:String = "ios", limit:Int = 1, after:String = "", completion: @escaping (Post?) -> Void) {
+        
+        let reqUrl = buildURL(subreddit, limit, after)
+        
         let task = URLSession.shared.dataTask(with: reqUrl) {data,_,error in
             if let error {
                 print(error.localizedDescription)
