@@ -13,11 +13,11 @@ class PostNetworkService {
     
     private let url = URL(string: "https://www.reddit.com/r/ios/top.json")!
     
-    func fetchRedditAPIWithDataTask(limit:Int = 1, after:Int) -> Void {
+    func fetchRedditAPIWithDataTask(limit:Int = 1, after:String = "", completion: @escaping (Post?) -> Void) {
         let reqUrl = url
             .appending(queryItems: [
                 URLQueryItem(name: "limit", value: String(limit)),
-                URLQueryItem(name: "after", value: String(after))
+                URLQueryItem(name: "after", value: after)
             ])
         let task = URLSession.shared.dataTask(with: reqUrl) {data,_,error in
             if let error {
@@ -29,7 +29,7 @@ class PostNetworkService {
                 return
             }
             let post = try? JSONDecoder().decode(Post.self, from: data)
-            print(String(describing: post))
+            completion(post)
         }
         task.resume()
     }
