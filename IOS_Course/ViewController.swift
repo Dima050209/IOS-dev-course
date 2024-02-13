@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var ratingBtn: UIButton!
     @IBOutlet weak var commentBtn: UIButton!
+    @IBOutlet weak var savedBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,8 @@ class ViewController: UIViewController {
                     self.postTitle.text = res.data.children[0].data.title
                     self.commentBtn.setTitle(String(res.data.children[0].data.numComments), for: .normal)
                     self.ratingBtn.setTitle(String(res.data.children[0].data.ups + res.data.children[0].data.downs), for: .normal)
+                    // temporary
+                    self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
                 }
                 let resImg = res!.data.children[0].data.preview.images[0].source
                 let imgUrl = URL(string: resImg.url.replacingOccurrences(of: "&amp", with: "&"))!

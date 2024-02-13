@@ -152,6 +152,7 @@
                         <outlet property="img" destination="lqV-er-jCE" id="Sn0-lg-DPD"/>
                         <outlet property="postTitle" destination="WC3-Xc-qq9" id="xkW-WG-cm2"/>
                         <outlet property="ratingBtn" destination="Q90-2k-AZc" id="s3d-yU-BlC"/>
+                        <outlet property="savedBtn" destination="KeT-c4-2Zg" id="Vyv-lG-Lvb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
