@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var authorName: UILabel!
     @IBOutlet weak var domain: UILabel!
     @IBOutlet weak var postTitle: UILabel!
+    @IBOutlet var img: UIImageView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,10 +24,19 @@ class ViewController: UIViewController {
                     self.authorName.text = res.data.children[0].data.author
                     self.domain.text = res.data.children[0].data.domain
                     self.postTitle.text = res.data.children[0].data.title
-                } else {
-                    // Обробка випадку, коли res є нульовим
+                }
+                let resImg = res!.data.children[0].data.preview.images[0].source
+                let imgUrl = URL(string: resImg.url.replacingOccurrences(of: "&amp", with: "&"))!
+                DispatchQueue.global().async { [weak self] in
+                    if let data = try? Data(contentsOf: imgUrl) {
+                        DispatchQueue.main.async {
+                            self?.img?.image = UIImage(data: data)
+                        }
+                    
+                    }
                 }
             }
+            
         }
         
     }

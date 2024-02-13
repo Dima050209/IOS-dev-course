@@ -18,7 +18,8 @@ class PostNetworkService {
         return URL(string: urlStart + subreddit + urlEnd)!
             .appending(queryItems: [
                 URLQueryItem(name: "limit", value: String(limit)),
-                URLQueryItem(name: "after", value: after)
+                URLQueryItem(name: "after", value: after),
+                URLQueryItem(name: "raw_json", value: String(1))
             ])
     }
     func fetchRedditAPIWithDataTask(subreddit:String = "ios", limit:Int = 1, after:String = "", completion: @escaping (Post?) -> Void) {
