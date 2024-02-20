@@ -20,16 +20,14 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("hola")
         var cell = tableView.dequeueReusableCell(withIdentifier: "post", for: indexPath) as! PostTableViewCell
-        PostNetworkService.shared.fetchRedditAPIWithDataTask() { res in
-
+        PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 5) { res in
             if let res = res {
-                cell.configure(redditPost: res)
+                cell.configure(redditPost: res.data.children[indexPath.row])
             }
             
             

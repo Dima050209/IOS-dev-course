@@ -35,8 +35,16 @@ class PostNetworkService {
                 print("Data is not available")
                 return
             }
-            let post = try? JSONDecoder().decode(Post.self, from: data)
-            completion(post)
+//            let posts = try? JSONDecoder().decode(Posts.self, from: data)
+//            print(posts)
+//            completion(posts)
+            do {
+                let posts = try JSONDecoder().decode(Post.self, from: data)
+                completion(posts)
+            } catch {
+                print("Помилка декодування JSON: \(error)")
+                completion(nil)
+            }
         }
         task.resume()
     }
@@ -72,90 +80,90 @@ struct Child: Codable {
 // MARK: - ChildData
 struct ChildData: Codable {
     let approvedAtUTC: String?
-    let subreddit, selftext, authorFullname: String
-    let saved: Bool
+    let subreddit, selftext, authorFullname: String?
+    let saved: Bool?
     let modReasonTitle: String?
-    let gilded: Int
-    let clicked: Bool
-    let title: String
+    let gilded: Int?
+    let clicked: Bool?
+    let title: String?
     let linkFlairRichtext: [String?]
-    let subredditNamePrefixed: String
-    let hidden: Bool
-    let pwls: Int
-    let linkFlairCSSClass: String
-    let downs, thumbnailHeight: Int
+    let subredditNamePrefixed: String?
+    let hidden: Bool?
+    let pwls: Int?
+    let linkFlairCSSClass: String?
+    let downs, thumbnailHeight: Int?
     let topAwardedType: String?
-    let hideScore: Bool
-    let name: String
-    let quarantine: Bool
-    let linkFlairTextColor: String
-    let upvoteRatio: Double
+    let hideScore: Bool?
+    let name: String?
+    let quarantine: Bool?
+    let linkFlairTextColor: String?
+    let upvoteRatio: Double?
     let authorFlairBackgroundColor: String?
-    let ups, totalAwardsReceived: Int
-    let mediaEmbed: Gildings
-    let thumbnailWidth: Int
+    let ups, totalAwardsReceived: Int?
+    let mediaEmbed: Gildings?
+    let thumbnailWidth: Int?
     let authorFlairTemplateID: String?
-    let isOriginalContent: Bool
+    let isOriginalContent: Bool?
     let userReports: [String?]
     let secureMedia: String?
-    let isRedditMediaDomain, isMeta: Bool
+    let isRedditMediaDomain, isMeta: Bool?
     let category: String?
-    let secureMediaEmbed: Gildings
-    let linkFlairText: String
-    let canModPost: Bool
-    let score: Int
+    let secureMediaEmbed: Gildings?
+    let linkFlairText: String?
+    let canModPost: Bool?
+    let score: Int?
     let approvedBy: String?
-    let isCreatedFromAdsUI, authorPremium: Bool
-    let thumbnail: String
-    let edited: Bool
+    let isCreatedFromAdsUI, authorPremium: Bool?
+    let thumbnail: String?
+    let edited: Bool?
     let authorFlairCSSClass: String?
     let authorFlairRichtext: [String?]
-    let gildings: Gildings
-    let postHint: String
+    let gildings: Gildings?
+    let postHint: String?
     let contentCategories: String?
-    let isSelf: Bool
-    let subredditType: String
-    let created: Int
-    let linkFlairType: String
-    let wls: Int
+    let isSelf: Bool?
+    let subredditType: String?
+    let created: Int?
+    let linkFlairType: String?
+    let wls: Int?
     let removedByCategory, bannedBy: String?
-    let authorFlairType, domain: String
-    let allowLiveComments: Bool
+    let authorFlairType, domain: String?
+    let allowLiveComments: Bool?
     let selftextHTML, likes, suggestedSort, bannedAtUTC: String?
-    let urlOverriddenByDest: String
+    let urlOverriddenByDest: String?
     let viewCount: String?
-    let archived, noFollow, isCrosspostable, pinned: Bool
-    let over18: Bool
-    let preview: Preview
+    let archived, noFollow, isCrosspostable, pinned: Bool?
+    let over18: Bool?
+    let preview: Preview?
     let allAwardings, awarders: [String?]
-    let mediaOnly: Bool
-    let linkFlairTemplateID: String
-    let canGild, spoiler, locked: Bool
+    let mediaOnly: Bool?
+    let linkFlairTemplateID: String?
+    let canGild, spoiler, locked: Bool?
     let authorFlairText: String?
     let treatmentTags: [String?]
-    let visited: Bool
+    let visited: Bool?
     let removedBy, modNote, distinguished: String?
-    let subredditID: String
-    let authorIsBlocked: Bool
+    let subredditID: String?
+    let authorIsBlocked: Bool?
     let modReasonBy, numReports, removalReason: String?
-    let linkFlairBackgroundColor, id: String
-    let isRobotIndexable: Bool
+    let linkFlairBackgroundColor, id: String?
+    let isRobotIndexable: Bool?
     let reportReasons: String?
-    let author: String
+    let author: String?
     let discussionType: String?
-    let numComments: Int
-    let sendReplies: Bool
-    let whitelistStatus: String
-    let contestMode: Bool
+    let numComments: Int?
+    let sendReplies: Bool?
+    let whitelistStatus: String?
+    let contestMode: Bool?
     let modReports: [String?]
-    let authorPatreonFlair: Bool
+    let authorPatreonFlair: Bool?
     let authorFlairTextColor: String?
-    let permalink, parentWhitelistStatus: String
-    let stickied: Bool
-    let url: String
-    let subredditSubscribers, createdUTC, numCrossposts: Int
+    let permalink, parentWhitelistStatus: String?
+    let stickied: Bool?
+    let url: String?
+    let subredditSubscribers, createdUTC, numCrossposts: Int?
     let media: String?
-    let isVideo: Bool
+    let isVideo: Bool?
 
     enum CodingKeys: String, CodingKey {
         case approvedAtUTC = "approved_at_utc"
