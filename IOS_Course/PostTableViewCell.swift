@@ -39,24 +39,25 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func config(redditPost:Post) {
+    func configure(redditPost:Post) {
         let myPost = MyPost(redditPost: redditPost)
-        self.authorName.text = myPost.author
-        self.timePassed.text = myPost.timePassed
-        self.postTitle.text = myPost.title
-        self.domain.text = myPost.domain
-        // temporary
-        self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: myPost.image) {
-                DispatchQueue.main.async {
-                    self?.img?.image = UIImage(data: data)
+        DispatchQueue.main.async {
+            self.authorName.text = myPost.author
+            self.timePassed.text = myPost.timePassed
+            self.postTitle.text = myPost.title
+            self.domain.text = myPost.domain
+            // temporary
+            self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: myPost.image) {
+                    DispatchQueue.main.async {
+                        self?.img?.image = UIImage(data: data)
+                    }
                 }
             }
+            self.commentsBtn.setTitle(String(myPost.rating), for: .normal)
+            self.ratingBtn.setTitle(String(myPost.comments), for: .normal)
         }
-        self.commentsBtn.setTitle(String(myPost.rating), for: .normal)
-        self.ratingBtn.setTitle(String(myPost.comments), for: .normal)
-        // temporary
     }
 
 }
