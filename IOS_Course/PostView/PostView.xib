@@ -10,7 +10,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostView" customModule="IOS_Course" customModuleProvider="target">
             <connections>
+                <outlet property="authorName" destination="qnu-JR-sFC" id="w1f-FQ-Aoc"/>
+                <outlet property="commentBtn" destination="6LK-XI-ymR" id="fyS-ww-ViU"/>
                 <outlet property="contentView" destination="DCx-Nh-mWr" id="1RW-xj-te9"/>
+                <outlet property="domain" destination="wtL-1E-V34" id="ttQ-vX-C7O"/>
+                <outlet property="img" destination="0pU-uB-fLt" id="y7b-BS-XSc"/>
+                <outlet property="postTitle" destination="hGy-nY-EoE" id="3rj-KK-tos"/>
+                <outlet property="ratingBtn" destination="tiR-Im-hMG" id="5EV-PO-XPH"/>
+                <outlet property="savedBtn" destination="xFC-DF-wjy" id="HhM-oN-ZIC"/>
+                <outlet property="shareBtn" destination="UIl-fq-ZQ6" id="iwI-ay-0qD"/>
+                <outlet property="timePassed" destination="zsm-zd-221" id="Txg-es-rNx"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

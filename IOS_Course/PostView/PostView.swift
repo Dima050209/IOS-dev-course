@@ -11,6 +11,15 @@ class PostView: UIView {
     let kCONTENT_XIB_NAME = "PostView"
     @IBOutlet var contentView: UIView!
     
+    @IBOutlet weak var shareBtn: UIButton!
+    @IBOutlet weak var postTitle: UILabel!
+    @IBOutlet weak var savedBtn: UIButton!
+    @IBOutlet weak var domain: UILabel!
+    @IBOutlet weak var ratingBtn: UIButton!
+    @IBOutlet weak var commentBtn: UIButton!
+    @IBOutlet var img: UIImageView?
+    @IBOutlet weak var timePassed: UILabel!
+    @IBOutlet weak var authorName: UILabel!
     override init(frame: CGRect) {
            super.init(frame: frame)
            commonInit()
