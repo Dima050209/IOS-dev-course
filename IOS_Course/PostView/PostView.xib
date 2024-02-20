@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="authorName" destination="qnu-JR-sFC" id="w1f-FQ-Aoc"/>
                 <outlet property="commentBtn" destination="6LK-XI-ymR" id="fyS-ww-ViU"/>
-                <outlet property="contentView" destination="DCx-Nh-mWr" id="1RW-xj-te9"/>
+                <outlet property="contentView" destination="DCx-Nh-mWr" id="Z5d-if-0TG"/>
                 <outlet property="domain" destination="wtL-1E-V34" id="ttQ-vX-C7O"/>
                 <outlet property="img" destination="0pU-uB-fLt" id="y7b-BS-XSc"/>
                 <outlet property="postTitle" destination="hGy-nY-EoE" id="3rj-KK-tos"/>

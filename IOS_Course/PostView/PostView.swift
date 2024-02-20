@@ -32,7 +32,9 @@ class PostView: UIView {
        
        func commonInit() {
            Bundle.main.loadNibNamed(kCONTENT_XIB_NAME, owner: self, options: nil)
-           contentView.fixInView(self)
+//           contentView.fixInView(self)
+           contentView.frame = self.bounds
+           contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
        }
 }
 extension UIView
