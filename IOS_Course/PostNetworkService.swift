@@ -44,6 +44,7 @@ class PostNetworkService {
                 completion(posts)
             } catch {
                 print("JSON decoding error: \(error)")
+                print("JSON decoding error")
                 completion(nil)
             }
         }

@@ -9,11 +9,19 @@ import UIKit
 
 class PostListViewController: UIViewController {
     var posts = [Child]()
+    
+    @IBOutlet weak var postsTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10) { res in
             if let res = res {
                 self.posts.append(contentsOf: res.data.children)
+                //print(self.posts)
+                DispatchQueue.main.async {
+                    self.postsTableView.reloadData()
+                }
             }
         }
     }
@@ -31,22 +39,36 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
 //                cell.configure(redditPost: res.data.children[indexPath.row])
 //            }
 //        }
+        print(self.posts[indexPath.row])
         cell.configure(redditPost: self.posts[indexPath.row])
         return cell
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        for i in 1...posts.count {
-            if let lastPostAuthorName = posts[posts.count-1].data.authorFullname {
-                PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10, after:lastPostAuthorName) { res in
-                    if let res = res {
-                        self.posts.append(contentsOf: res.data.children)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
+        let lastVisibleIndexPath = IndexPath(row: posts.count - 1, section: 0)
+        if self.postsTableView.indexPathsForVisibleRows?.contains(lastVisibleIndexPath) == true {
+            for i in 1...posts.count {
+                if let lastPostAuthorName = posts[posts.count-i].data.authorFullname {
+                    PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10, after:lastPostAuthorName) { res in
+                        if let res = res {
+                            self.posts.append(contentsOf: res.data.children)
+                            DispatchQueue.main.async {
+                                self.postsTableView.reloadData()
+                            }
+                        } else {
+                            print("No posts were returned with after parameter \(lastPostAuthorName)")
                         }
-                    } else {
-                        print("No posts were returned with after parameter \(lastPostAuthorName)")
                     }
+                }
+            }
+            PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10) { res in
+                if let res = res {
+                    self.posts.append(contentsOf: res.data.children)
+                    DispatchQueue.main.async {
+                        self.postsTableView.reloadData()
+                    }
+                } else {
+                    print("No posts were returned")
                 }
             }
         }

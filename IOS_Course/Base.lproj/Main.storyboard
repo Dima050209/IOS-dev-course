@@ -209,6 +209,9 @@
                             <constraint firstItem="3Kl-Y1-IJB" firstAttribute="trailing" secondItem="Jsj-S5-YFh" secondAttribute="trailing" constant="20" id="yI5-kT-CRe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="postsTableView" destination="g9q-zz-jwC" id="vbs-qg-6a3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rN-ma-ryL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
