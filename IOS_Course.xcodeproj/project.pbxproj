@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD4A07C92B8B5A7B001DB2CF /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4A07C82B8B5A7B001DB2CF /* PostListViewController.swift */; };
 		DD9D755A2B84AAEF001156A6 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D75592B84AAEF001156A6 /* PostView.swift */; };
 		DD9D755C2B84AB04001156A6 /* PostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9D755B2B84AB04001156A6 /* PostView.xib */; };
 		DD9D755E2B84ADC4001156A6 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D755D2B84ADC4001156A6 /* PostTableViewCell.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD4A07C82B8B5A7B001DB2CF /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		DD9D75592B84AAEF001156A6 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		DD9D755B2B84AB04001156A6 /* PostView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostView.xib; sourceTree = "<group>"; };
 		DD9D755D2B84ADC4001156A6 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				DDE4E82F2B7B944000D0C3F4 /* PostNetworkService.swift */,
 				DD9D755D2B84ADC4001156A6 /* PostTableViewCell.swift */,
 				DD9D755F2B84AF05001156A6 /* PostViewController.swift */,
+				DD4A07C82B8B5A7B001DB2CF /* PostListViewController.swift */,
 			);
 			path = IOS_Course;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD4A07C92B8B5A7B001DB2CF /* PostListViewController.swift in Sources */,
 				DDE4E8302B7B944000D0C3F4 /* PostNetworkService.swift in Sources */,
 				DDE4E8042B7B895800D0C3F4 /* ViewController.swift in Sources */,
 				DD9D75602B84AF05001156A6 /* PostViewController.swift in Sources */,
