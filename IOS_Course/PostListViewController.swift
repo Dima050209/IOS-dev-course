@@ -61,13 +61,14 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }
-            PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10) { res in
-                if let res = res {
-                    self.posts.append(contentsOf: res.data.children)
+            PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: posts.count + 10) { res in
+                if let lastTenPosts = res?.data.children.suffix(10) {
+                    self.posts.append(contentsOf: lastTenPosts)
                     DispatchQueue.main.async {
                         self.postsTableView.reloadData()
                     }
                 } else {
+                    print(self.posts.count)
                     print("No posts were returned")
                 }
             }
