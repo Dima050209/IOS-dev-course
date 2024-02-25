@@ -230,6 +230,7 @@
                     <navigationItem key="navigationItem" id="1X2-es-lvq"/>
                     <connections>
                         <outlet property="postsTableView" destination="g9q-zz-jwC" id="vbs-qg-6a3"/>
+                        <outlet property="subredditLabel" destination="tRa-C0-jz3" id="AHs-9h-agK"/>
                         <segue destination="mje-91-H2m" kind="show" identifier="go_to_post_details" id="PiG-zL-isS"/>
                     </connections>
                 </viewController>

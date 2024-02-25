@@ -14,16 +14,17 @@ class PostListViewController: UIViewController {
        }
     private var posts = [Child]()
     private var lastSelectedPost: Child?
+    private var subreddit:String = "ios"
     
+    @IBOutlet weak var subredditLabel: UILabel!
     @IBOutlet weak var postsTableView: UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10) { res in
+        self.subredditLabel.text = "/r/" + subreddit
+        PostNetworkService.shared.fetchRedditAPIWithDataTask(subreddit: subreddit, limit: 10) { res in
             if let res = res {
                 self.posts.append(contentsOf: res.data.children)
-                //print(self.posts)
                 DispatchQueue.main.async {
                     self.postsTableView.reloadData()
                 }
@@ -72,9 +73,10 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let lastVisibleIndexPath = IndexPath(row: posts.count - 1, section: 0)
         if self.postsTableView.indexPathsForVisibleRows?.contains(lastVisibleIndexPath) == true {
+            // try to find some posts with given after. Try this for every post until something is found
             for i in 1...posts.count {
                 if let lastPostAuthorName = posts[posts.count-i].data.authorFullname {
-                    PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10, after:lastPostAuthorName) { res in
+                    PostNetworkService.shared.fetchRedditAPIWithDataTask(subreddit: subreddit, limit: 10, after:lastPostAuthorName) { res in
                         if let res = res {
                             self.posts.append(contentsOf: res.data.children)
                             DispatchQueue.main.async {
@@ -86,7 +88,8 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
                     }
                 }
             }
-            PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: posts.count + 10) { res in
+            // if haven't been found any posts with any after parameters, just load 10 more posts without after
+            PostNetworkService.shared.fetchRedditAPIWithDataTask(subreddit: subreddit, limit: posts.count + 10) { res in
                 if let lastTenPosts = res?.data.children.suffix(10) {
                     self.posts.append(contentsOf: lastTenPosts)
                     DispatchQueue.main.async {
