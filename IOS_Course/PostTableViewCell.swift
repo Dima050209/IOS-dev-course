@@ -39,6 +39,17 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
         
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.authorName.text = ""
+        self.timePassed.text = ""
+        self.domain.text = ""
+        self.savedBtn.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        self.postTitle.text = ""
+        self.commentsBtn.setTitle("", for: .normal)
+        self.ratingBtn.setTitle("", for: .normal)
+        self.img?.image = UIImage(systemName: "zzz")
+    }
     func configure(redditPost:Child) {
         let myPost = MyPost(redditPost: redditPost)
         DispatchQueue.main.async {
@@ -46,8 +57,11 @@ class PostTableViewCell: UITableViewCell {
             self.timePassed.text = myPost.timePassed
             self.postTitle.text = myPost.title
             self.domain.text = myPost.domain
-            // temporary
-            self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            if myPost.saved {
+                self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            } else {
+                self.savedBtn.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            }
             if let image = myPost.image {
                 DispatchQueue.global().async { [weak self] in
                     if let data = try? Data(contentsOf: image) {
