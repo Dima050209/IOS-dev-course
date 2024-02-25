@@ -34,6 +34,10 @@ class PostTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.img?.image = UIImage(systemName: "clock.badge.questionmark.ar")
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state

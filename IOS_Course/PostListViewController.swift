@@ -8,7 +8,12 @@
 import UIKit
 
 class PostListViewController: UIViewController {
-    var posts = [Child]()
+    struct Const {
+        static let postReuseIdentifier = "post"
+        static let goToPostDetailsSegueID = "go_to_post_details"
+    }
+    private var posts = [Child]()
+    private var lastSelectedPost: Child?
     
     @IBOutlet weak var postsTableView: UITableView!
     
@@ -25,6 +30,24 @@ class PostListViewController: UIViewController {
             }
         }
     }
+    override func prepare(
+        for segue: UIStoryboardSegue,
+        sender: Any?
+    ) {
+        switch segue.identifier {
+        case Const.goToPostDetailsSegueID:
+            let nextVc = segue.destination as! PostDetailsViewController
+            DispatchQueue.main.async {
+                print("seg")
+                //print(self.lastSelectedPost!)
+                if let post = self.lastSelectedPost {
+                    nextVc.config(with: post)
+                }
+            }
+
+        default: break
+        }
+    }
 
 }
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -33,15 +56,17 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "post", for: indexPath) as! PostTableViewCell
-//        PostNetworkService.shared.fetchRedditAPIWithDataTask(limit: 10) { res in
-//            if let res = res {
-//                cell.configure(redditPost: res.data.children[indexPath.row])
-//            }
-//        }
-        print(self.posts[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: Const.postReuseIdentifier, for: indexPath) as! PostTableViewCell
         cell.configure(redditPost: self.posts[indexPath.row])
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didselect")
+        self.lastSelectedPost = self.posts[indexPath.row]
+        self.performSegue(
+            withIdentifier: Const.goToPostDetailsSegueID,
+            sender: nil
+        )
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

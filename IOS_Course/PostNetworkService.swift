@@ -25,7 +25,7 @@ class PostNetworkService {
     func fetchRedditAPIWithDataTask(subreddit:String = "ios", limit:Int = 1, after:String = "", completion: @escaping (Post?) -> Void) {
       
         let reqUrl = buildURL(subreddit, limit, after)
-        print(reqUrl)
+        //print(reqUrl)
         
         let task = URLSession.shared.dataTask(with: reqUrl) {data,_,error in
             if let error {
@@ -43,8 +43,8 @@ class PostNetworkService {
                 let posts = try JSONDecoder().decode(Post.self, from: data)
                 completion(posts)
             } catch {
-                print("JSON decoding error: \(error)")
-                print("JSON decoding error")
+                //print("JSON decoding error: \(error)")
+                //print("JSON decoding error")
                 completion(nil)
             }
         }
