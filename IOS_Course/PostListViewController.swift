@@ -64,7 +64,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          print("didselect")
+         // print("didselect")
           self.lastSelectedPost = self.posts[indexPath.row]
           self.performSegue(
               withIdentifier: Const.goToPostDetailsSegueID,
@@ -111,6 +111,40 @@ extension PostListViewController : PostTableViewCellDelegate {
         if let imgUrl = url {
             let avc = UIActivityViewController(activityItems: [imgUrl], applicationActivities: nil)
             self.present(avc, animated: true, completion: nil)
+        }
+    }
+    func didTapSavePostButton(with post: Child?) {
+        if let selectedPost = post {
+            if let postURL = post?.data.permalink {
+                if let savedPosts = PostSaveService.shared.loadPosts() {
+                    // check if posts db contains post, using permalink as identifier
+                    var containsPost = false
+                    for post in savedPosts {
+                        if let link = post.data.permalink {
+                            if link.elementsEqual(postURL) {
+                                containsPost = true
+                            }
+                        }
+                    }
+                    if containsPost {
+                        // erase post from db
+                        var newPosts:[Child] = []
+                        for post in savedPosts {
+                            if let link = post.data.permalink {
+                                if !link.elementsEqual(postURL) {
+                                    newPosts.append(post)
+                                }
+                            }
+                        }
+                        PostSaveService.shared.savePosts(posts: newPosts)
+                    } else {
+                        // add post to db
+                        var newPosts:[Child] = savedPosts
+                        newPosts.append(selectedPost)
+                        PostSaveService.shared.savePosts(posts: newPosts)
+                    }
+                }
+            }
         }
     }
 }

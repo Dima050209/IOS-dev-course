@@ -9,6 +9,7 @@ import UIKit
 
 protocol PostTableViewCellDelegate: AnyObject {
     func didTapShareButton(with url:URL?)
+    func didTapSavePostButton(with post:Child?)
 }
 
 class PostTableViewCell: UITableViewCell {
@@ -26,6 +27,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingBtn: UIButton!
     
     private var shareURL:String = ""
+    private var selectedPost:Child?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,9 +41,20 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @IBAction func shareAction(_ sender: Any) {
-        delegate?.didTapShareButton(with: URL(string:self.shareURL))
+        delegate?.didTapShareButton(with: URL(string: "https://www.reddit.com" + self.shareURL))
     }
     
+    @IBAction func savePostAction(_ sender: Any) {
+        if let img = self.savedBtn.currentImage {
+            if img.isEqual(UIImage(systemName: "bookmark.fill")) {
+                self.savedBtn.setImage(UIImage(systemName: "bookmark"), for: .normal)
+            } else {
+                self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            }
+        }
+        delegate?.didTapSavePostButton(with: self.selectedPost)
+        
+    }
     override func prepareForReuse() {
         super.prepareForReuse()
         self.authorName.text = ""
@@ -55,13 +68,16 @@ class PostTableViewCell: UITableViewCell {
     }
     func configure(redditPost:Child) {
         let myPost = MyPost(redditPost: redditPost)
+        
         self.shareURL = myPost.url
+        self.selectedPost = redditPost
+        
         DispatchQueue.main.async {
             self.authorName.text = myPost.author
             self.timePassed.text = myPost.timePassed
             self.postTitle.text = myPost.title
             self.domain.text = myPost.domain
-            if myPost.saved {
+            if PostSaveService.shared.isSaved(post: redditPost){
                 self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
             } else {
                 self.savedBtn.setImage(UIImage(systemName: "bookmark"), for: .normal)
@@ -137,7 +153,8 @@ struct MyPost {
         self.saved = false
         
         if let link = redditPost.data.permalink {
-            self.url = "https://www.reddit.com" + link
+            //  "https://www.reddit.com" + link
+            self.url = link
         } else {
             self.url = "Unable to get link"
         }
