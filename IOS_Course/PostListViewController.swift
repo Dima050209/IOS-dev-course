@@ -22,8 +22,12 @@ class PostListViewController: UIViewController {
     @IBOutlet weak var subredditLabel: UILabel!
     @IBOutlet weak var postsTableView: UITableView!
     
+    @IBOutlet weak var savedFilterByTitleTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.savedFilterByTitleTextField.isUserInteractionEnabled = false
+        self.savedFilterByTitleTextField.alpha = 0
+        self.savedFilterByTitleTextField.delegate = self
         self.savedFilterBtn.setImage(UIImage(systemName: "bookmark.circle"), for: .normal)
         self.subredditLabel.text = "/r/" + subreddit
         PostNetworkService.shared.fetchRedditAPIWithDataTask(subreddit: subreddit, limit: 10) { res in
@@ -43,6 +47,8 @@ class PostListViewController: UIViewController {
                 self.savedFilterOn = false
                 self.posts = postsCopy
                 self.postsTableView.reloadData()
+                self.savedFilterByTitleTextField.isUserInteractionEnabled = false
+                self.savedFilterByTitleTextField.alpha = 0
             } else {
                 self.savedFilterBtn.setImage(UIImage(systemName: "bookmark.circle.fill"), for: .normal)
                 self.savedFilterOn = true
@@ -50,6 +56,8 @@ class PostListViewController: UIViewController {
                     self.postsCopy = posts
                     self.posts = filteredPosts
                     self.postsTableView.reloadData()
+                    self.savedFilterByTitleTextField.isUserInteractionEnabled = true
+                    self.savedFilterByTitleTextField.alpha = 1
                 }
             }
         }
@@ -175,3 +183,29 @@ extension PostListViewController : PostTableViewCellDelegate {
     }
 }
 
+extension PostListViewController : UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var filteredPosts = [Child]()
+        if let currentText = textField.text {
+            if let posts = PostSaveService.shared.loadPosts() {
+                for post in posts {
+                    if let title = post.data.title {
+                        if title.contains(currentText) {
+                            filteredPosts.append(post)
+                        }
+                    }
+                }
+            }
+        }
+        self.posts = filteredPosts
+        self.postsTableView.reloadData()
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+
+}

@@ -59,13 +59,20 @@
                                             <action selector="savedFilterAction:" destination="A6C-Th-XVb" eventType="touchUpInside" id="Qsj-AN-dTR"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0C-k8-fCx">
+                                        <rect key="frame" x="20" y="8.6666666666666714" width="135" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.062745098040000002" green="0.066666666669999999" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="tRa-C0-jz3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jsj-S5-YFh" secondAttribute="leading" constant="20" symbolic="YES" id="3K8-Vc-VxI"/>
                                     <constraint firstAttribute="height" constant="80" id="CD8-tE-jkW"/>
                                     <constraint firstItem="PYf-9J-LDh" firstAttribute="top" secondItem="Jsj-S5-YFh" secondAttribute="top" id="IYc-7N-Go5"/>
                                     <constraint firstItem="PYf-9J-LDh" firstAttribute="leading" secondItem="tRa-C0-jz3" secondAttribute="trailing" constant="40" id="LZz-gp-Pcb"/>
+                                    <constraint firstItem="T0C-k8-fCx" firstAttribute="centerY" secondItem="tRa-C0-jz3" secondAttribute="centerY" id="LmO-mR-OXh"/>
+                                    <constraint firstItem="T0C-k8-fCx" firstAttribute="leading" secondItem="Jsj-S5-YFh" secondAttribute="leading" constant="20" id="TzO-0f-dYV"/>
+                                    <constraint firstItem="tRa-C0-jz3" firstAttribute="leading" secondItem="T0C-k8-fCx" secondAttribute="trailing" constant="20" id="aXt-VX-437"/>
                                     <constraint firstItem="tRa-C0-jz3" firstAttribute="centerY" secondItem="PYf-9J-LDh" secondAttribute="centerY" id="f1h-cH-RIH"/>
                                     <constraint firstAttribute="trailing" secondItem="PYf-9J-LDh" secondAttribute="trailing" id="qVh-a5-zI8"/>
                                 </constraints>
@@ -240,6 +247,7 @@
                     <connections>
                         <outlet property="postsTableView" destination="g9q-zz-jwC" id="vbs-qg-6a3"/>
                         <outlet property="savedFilterBtn" destination="PYf-9J-LDh" id="6UL-RV-iZw"/>
+                        <outlet property="savedFilterByTitleTextField" destination="T0C-k8-fCx" id="6UK-z4-VvZ"/>
                         <outlet property="subredditLabel" destination="tRa-C0-jz3" id="AHs-9h-agK"/>
                         <segue destination="mje-91-H2m" kind="show" identifier="go_to_post_details" id="PiG-zL-isS"/>
                     </connections>
