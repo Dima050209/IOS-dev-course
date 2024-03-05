@@ -168,6 +168,9 @@
                                                             <rect key="frame" x="322" y="0.0" width="48" height="34"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="shareAction:" destination="OQL-60-nOn" eventType="touchUpInside" id="O4U-Ej-TTP"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>

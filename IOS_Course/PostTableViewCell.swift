@@ -7,28 +7,26 @@
 
 import UIKit
 
+protocol PostTableViewCellDelegate: AnyObject {
+    func didTapShareButton(with url:URL?)
+}
+
 class PostTableViewCell: UITableViewCell {
 
+    weak var delegate: PostTableViewCellDelegate?
     
     @IBOutlet weak var authorName: UILabel!
-    
     @IBOutlet weak var timePassed: UILabel!
-    
-    
     @IBOutlet weak var domain: UILabel!
-    
     @IBOutlet weak var savedBtn: UIButton!
-    
     @IBOutlet weak var postTitle: UILabel!
-    
-    
     @IBOutlet var img: UIImageView!
-    
     @IBOutlet weak var commentsBtn: UIButton!
-    
     @IBOutlet weak var shareBtn: UIButton!
-    
     @IBOutlet weak var ratingBtn: UIButton!
+    
+    private var shareURL:String = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -39,6 +37,11 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
         
     }
+    
+    @IBAction func shareAction(_ sender: Any) {
+        delegate?.didTapShareButton(with: URL(string:self.shareURL))
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.authorName.text = ""
@@ -52,6 +55,7 @@ class PostTableViewCell: UITableViewCell {
     }
     func configure(redditPost:Child) {
         let myPost = MyPost(redditPost: redditPost)
+        self.shareURL = myPost.url
         DispatchQueue.main.async {
             self.authorName.text = myPost.author
             self.timePassed.text = myPost.timePassed
@@ -87,6 +91,7 @@ struct MyPost {
     let image: URL?
     let rating: Int
     let comments: Int
+    let url: String
     
     init(redditPost:Child) {
         if let author = redditPost.data.authorFullname {
@@ -130,5 +135,11 @@ struct MyPost {
         }
         // temporary
         self.saved = false
+        
+        if let link = redditPost.data.permalink {
+            self.url = "https://www.reddit.com" + link
+        } else {
+            self.url = "Unable to get link"
+        }
     }
 }

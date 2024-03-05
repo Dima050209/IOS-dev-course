@@ -31,6 +31,7 @@ class PostListViewController: UIViewController {
             }
         }
     }
+    
     override func prepare(
            for segue: UIStoryboardSegue,
            sender: Any?
@@ -59,6 +60,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.postReuseIdentifier, for: indexPath) as! PostTableViewCell
         cell.configure(redditPost: self.posts[indexPath.row])
+        cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -104,3 +106,12 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
        
     }
 }
+extension PostListViewController : PostTableViewCellDelegate {
+    func didTapShareButton(with url: URL?) {
+        if let imgUrl = url {
+            let avc = UIActivityViewController(activityItems: [imgUrl], applicationActivities: nil)
+            self.present(avc, animated: true, completion: nil)
+        }
+    }
+}
+
