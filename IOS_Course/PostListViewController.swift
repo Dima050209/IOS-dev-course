@@ -39,7 +39,7 @@ class PostListViewController: UIViewController {
            case Const.goToPostDetailsSegueID:
                let nextVc = segue.destination as! PostDetailsViewController
                DispatchQueue.main.async {
-                   print("seg")
+                  
                    //print(self.lastSelectedPost!)
                    if let post = self.lastSelectedPost {
                        nextVc.config(with: post)

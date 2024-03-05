@@ -123,8 +123,8 @@ struct MyPost {
             self.rating = 0
         }
         
-        if let imgPreview = redditPost.data.preview {
-            self.image = URL(string: imgPreview.images[0].source.url.replacingOccurrences(of: "&amp", with: "&"))!
+        if let imgPreview = redditPost.data.url {
+            self.image = URL(string: imgPreview.replacingOccurrences(of: "&amp", with: "&"))!
         } else {
             self.image = nil
         }
