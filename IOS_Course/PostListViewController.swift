@@ -13,14 +13,18 @@ class PostListViewController: UIViewController {
            static let goToPostDetailsSegueID = "go_to_post_details"
        }
     private var posts = [Child]()
+    private var postsCopy = [Child]()
     private var lastSelectedPost: Child?
     private var subreddit:String = "ios"
+    private var savedFilterOn = false
     
+    @IBOutlet weak var savedFilterBtn: UIButton!
     @IBOutlet weak var subredditLabel: UILabel!
     @IBOutlet weak var postsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.savedFilterBtn.setImage(UIImage(systemName: "bookmark.circle"), for: .normal)
         self.subredditLabel.text = "/r/" + subreddit
         PostNetworkService.shared.fetchRedditAPIWithDataTask(subreddit: subreddit, limit: 10) { res in
             if let res = res {
@@ -32,6 +36,25 @@ class PostListViewController: UIViewController {
         }
     }
     
+    @IBAction func savedFilterAction(_ sender: Any) {
+        if let img = self.savedFilterBtn.currentImage {
+            if img.isEqual(UIImage(systemName: "bookmark.circle.fill")) {
+                self.savedFilterBtn.setImage(UIImage(systemName: "bookmark.circle"), for: .normal)
+                self.savedFilterOn = false
+                self.posts = postsCopy
+                self.postsTableView.reloadData()
+            } else {
+                self.savedFilterBtn.setImage(UIImage(systemName: "bookmark.circle.fill"), for: .normal)
+                self.savedFilterOn = true
+                if let filteredPosts = PostSaveService.shared.loadPosts() {
+                    self.postsCopy = posts
+                    self.posts = filteredPosts
+                    self.postsTableView.reloadData()
+                }
+            }
+        }
+      
+    }
     override func prepare(
            for segue: UIStoryboardSegue,
            sender: Any?
@@ -73,6 +96,9 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
       }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.savedFilterOn {
+            return
+        }
         let lastVisibleIndexPath = IndexPath(row: posts.count - 1, section: 0)
         if self.postsTableView.indexPathsForVisibleRows?.contains(lastVisibleIndexPath) == true {
             // try to find some posts with given after. Try this for every post until something is found
