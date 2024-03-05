@@ -26,14 +26,34 @@ class PostDetailsViewController: UIViewController {
     @IBOutlet weak var commentsBtn: UIButton!
     
     @IBOutlet weak var shareBtn: UIButton!
+    private var currentPost:Child?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func savedAction(_ sender: Any) {
+        if let post = self.currentPost {
+            if PostSaveService.shared.isSaved(post: post) {
+                // remove post from db
+                self.savedBtn.setImage(UIImage(systemName: "bookmark"), for: .normal)
+                PostSaveService.shared.removePost(post: post)
+            } else {
+                // add post to db
+                self.savedBtn.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                PostSaveService.shared.addPost(post: post)
+            }
+        }
+        
+    }
+    @IBAction func shareAction(_ sender: Any) {
+        
+    }
     func config(with post:Child) {
         let myPost = MyPost(redditPost: post)
+        self.currentPost = post
         DispatchQueue.main.async {
             guard self.authorName != nil else { return }
             self.authorName.text = myPost.author

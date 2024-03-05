@@ -25,6 +25,7 @@ class PostListViewController: UIViewController {
     @IBOutlet weak var savedFilterByTitleTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.delegate = self
         self.savedFilterByTitleTextField.isUserInteractionEnabled = false
         self.savedFilterByTitleTextField.alpha = 0
         self.savedFilterByTitleTextField.delegate = self
@@ -207,5 +208,9 @@ extension PostListViewController : UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
+}
+extension PostListViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        self.postsTableView.reloadData()
+    }
 }

@@ -64,7 +64,7 @@ class PostTableViewCell: UITableViewCell {
         self.postTitle.text = ""
         self.commentsBtn.setTitle("", for: .normal)
         self.ratingBtn.setTitle("", for: .normal)
-        self.img?.image = UIImage(systemName: "zzz")
+        self.img?.image = nil
     }
     func configure(redditPost:Child) {
         let myPost = MyPost(redditPost: redditPost)
@@ -149,9 +149,9 @@ struct MyPost {
         } else {
             self.image = nil
         }
-        // temporary
-        self.saved = false
         
+        self.saved = PostSaveService.shared.isSaved(post: redditPost)
+      
         if let link = redditPost.data.permalink {
             //  "https://www.reddit.com" + link
             self.url = link

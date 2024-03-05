@@ -51,4 +51,52 @@ class PostSaveService {
         }
         return false
     }
+    func removePost(post:Child) {
+        if let postURL = post.data.permalink {
+            if let savedPosts = PostSaveService.shared.loadPosts() {
+                // check if posts db contains post, using permalink as identifier
+                var containsPost = false
+                for post in savedPosts {
+                    if let link = post.data.permalink {
+                        if link.elementsEqual(postURL) {
+                            containsPost = true
+                        }
+                    }
+                }
+                if containsPost {
+                    // erase post from db
+                    var newPosts:[Child] = []
+                    for post in savedPosts {
+                        if let link = post.data.permalink {
+                            if !link.elementsEqual(postURL) {
+                                newPosts.append(post)
+                            }
+                        }
+                    }
+                    PostSaveService.shared.savePosts(posts: newPosts)
+                }
+            }
+        }
+    }
+    func addPost(post:Child) {
+        if let postURL = post.data.permalink {
+            if let savedPosts = PostSaveService.shared.loadPosts() {
+                // check if posts db contains post, using permalink as identifier
+                var containsPost = false
+                for post in savedPosts {
+                    if let link = post.data.permalink {
+                        if link.elementsEqual(postURL) {
+                            containsPost = true
+                        }
+                    }
+                }
+                if !containsPost  {
+                    // add post to db
+                    var newPosts:[Child] = savedPosts
+                    newPosts.append(post)
+                    PostSaveService.shared.savePosts(posts: newPosts)
+                }
+            }
+        }
+    }
 }
