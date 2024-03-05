@@ -49,7 +49,10 @@ class PostDetailsViewController: UIViewController {
         
     }
     @IBAction func shareAction(_ sender: Any) {
-        
+        if let url = self.currentPost?.data.permalink {
+            let avc = UIActivityViewController(activityItems: ["https://www.reddit.com" + url], applicationActivities: nil)
+            self.present(avc, animated: true, completion: nil)
+        }
     }
     func config(with post:Child) {
         let myPost = MyPost(redditPost: post)
