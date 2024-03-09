@@ -96,12 +96,12 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         // print("didselect")
-          self.lastSelectedPost = self.posts[indexPath.row]
-          self.performSegue(
-              withIdentifier: Const.goToPostDetailsSegueID,
-              sender: nil
-          )
+//          print("didselect")
+//          self.lastSelectedPost = self.posts[indexPath.row]
+//          self.performSegue(
+//              withIdentifier: Const.goToPostDetailsSegueID,
+//              sender: nil
+//          )
       }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -181,6 +181,14 @@ extension PostListViewController : PostTableViewCellDelegate {
                 }
             }
         }
+    }
+    
+    func didTapCommentButton(with post: Child?) {
+        self.lastSelectedPost = post
+        self.performSegue(
+            withIdentifier: Const.goToPostDetailsSegueID,
+            sender: nil
+        )
     }
 }
 

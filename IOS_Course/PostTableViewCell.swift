@@ -10,6 +10,7 @@ import UIKit
 protocol PostTableViewCellDelegate: AnyObject {
     func didTapShareButton(with url:URL?)
     func didTapSavePostButton(with post:Child?)
+    func didTapCommentButton(with post:Child?)
 }
 
 class PostTableViewCell: UITableViewCell {
@@ -55,6 +56,12 @@ class PostTableViewCell: UITableViewCell {
         delegate?.didTapSavePostButton(with: self.selectedPost)
         
     }
+    
+    @IBAction func commentAction(_ sender: Any) {
+        print("here")
+        delegate?.didTapCommentButton(with: self.selectedPost)
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.authorName.text = ""
