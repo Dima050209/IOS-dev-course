@@ -142,6 +142,10 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 extension PostListViewController : PostTableViewCellDelegate {
+    func didDoubleTap(with post: Child?) {
+        didTapSavePostButton(with: post)
+    }
+    
     func didTapShareButton(with url: URL?) {
         if let imgUrl = url {
             let avc = UIActivityViewController(activityItems: [imgUrl], applicationActivities: nil)
